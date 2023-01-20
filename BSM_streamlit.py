@@ -58,7 +58,7 @@ def optionTheta(S, K, r, T, sigma, type="c"):
 
         elif type == "p":
             theta = - ((S * norm.pdf(d1, 0, 1) * sigma) / (2 * np.sqrt(T))) + r * K * np.exp(-r*T) * norm.cdf(-d2, 0, 1)
-        return theta/252
+        return theta/365
     except:
         st.sidebar.error("Please confirm all option parameters!")
 
