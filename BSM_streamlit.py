@@ -96,7 +96,7 @@ space = st.sidebar.header("")
 r = st.sidebar.number_input("Risk-Free Rate", min_value=0.000, max_value=1.000, step=0.0001, value=0.0339, format="%1.4f")
 S = st.sidebar.number_input("Underlying Asset Price", min_value=1.00, step=0.10, value=133.32)
 K = st.sidebar.number_input("Strike Price", min_value=1.00, step=0.10, value=145.00)
-days_to_expiry = st.sidebar.number_input("Time to Expiry Date (in days)", min_value=1, step=1, value=5)
+days_to_expiry = st.sidebar.number_input("Time to Expiry Date (in days)", min_value=1, step=0.1, value=5)
 sigma = st.sidebar.number_input("Volatility", min_value=0.000, max_value=1.000, step=0.0001, value=0.85664, format="%1.5f")
 type_input = st.sidebar.selectbox("Option Type",["Call", "Put"])
 
