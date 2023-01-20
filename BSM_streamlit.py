@@ -58,7 +58,7 @@ def optionTheta(S, K, r, T, sigma, type="c"):
 
         elif type == "p":
             theta = - ((S * norm.pdf(d1, 0, 1) * sigma) / (2 * np.sqrt(T))) + r * K * np.exp(-r*T) * norm.cdf(-d2, 0, 1)
-        return theta/365
+        return theta/252
     except:
         st.sidebar.error("Please confirm all option parameters!")
 
@@ -106,7 +106,7 @@ if type_input=="Call":
 elif type_input=="Put":
     type = "p"
 
-T = days_to_expiry/365
+T = days_to_expiry/252
 
 
 spot_prices = [i for i in range(0, int(S)+50 + 1)]
