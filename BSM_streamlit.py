@@ -58,7 +58,7 @@ def optionTheta(S, K, r, T, sigma, type="c"):
 
         elif type == "p":
             theta = - ((S * norm.pdf(d1, 0, 1) * sigma) / (2 * np.sqrt(T))) + r * K * np.exp(-r*T) * norm.cdf(-d2, 0, 1)
-        return theta/252
+        return theta/year_length_T
     except:
         st.sidebar.error("Please confirm all option parameters!")
 
@@ -97,6 +97,8 @@ r = st.sidebar.number_input("Risk-Free Rate", min_value=0.000, max_value=1.000, 
 S = st.sidebar.number_input("Underlying Asset Price", min_value=1.00, step=0.10, value=133.32)
 K = st.sidebar.number_input("Strike Price", min_value=1.00, step=0.10, value=145.00)
 days_to_expiry = st.sidebar.number_input("Time to Expiry Date (in days)", min_value=1.0, step=0.1, value=5.0)
+year_length_E = st.sidebar.number_input("Year Length for Expiry (in days)", min_value=1, step=1, value=252)
+year_length_T = st.sidebar.number_input("Year Length for Theta (in days)", min_value=1, step=1, value=252)
 sigma = st.sidebar.number_input("Volatility", min_value=0.000, max_value=1.000, step=0.0001, value=0.85664, format="%1.5f")
 type_input = st.sidebar.selectbox("Option Type",["Call", "Put"])
 
@@ -106,7 +108,7 @@ if type_input=="Call":
 elif type_input=="Put":
     type = "p"
 
-T = days_to_expiry/252
+T = days_to_expiry/year_length_E
 
 
 spot_prices = [i for i in range(0, int(S)+50 + 1)]
